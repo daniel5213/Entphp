@@ -1,12 +1,12 @@
 <?php
 $dia=0;$mes=0;$ano=0;
-echo "Introduce día: ";
+echo "Introduce dia: ";
 fscanf(STDIN,"%d\n",$dia);
 
 echo "Introduce mes: ";
 fscanf(STDIN,"%d\n",$mes);
 
-echo "Introduce año: ";
+echo "Introduce a�o: ";
 fscanf(STDIN,"%d\n",$ano);
 
 //time() es una funcion que saca los segundos de la fecha actual y el strtotime saca los segundos del formato introducido
