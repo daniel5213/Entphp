@@ -1,27 +1,44 @@
 <?php
-$d=0;
-$m=0;
-$y=0;
+$dia=0;$mes=0;$ano=0;
+echo "Introduce dÃ­a: ";
+fscanf(STDIN,"%d\n",$dia);
 
-echo "Introduce el dia:";
-fscanf(STDIN, "%d\n",$d);
-echo "Introduce el mes:";
-fscanf(STDIN, "%d\n",$m);
-echo "Introduce el año:";
-fscanf(STDIN, "%d\n",$y);
+echo "Introduce mes: ";
+fscanf(STDIN,"%d\n",$mes);
 
-//Para pasar los dias a segundos la formula es 1 dia =  86400, 1 Meses = 2629800 Segundos,1 Años = 31557600 Segundos
-function convertirDiasaSegundos($d,$m,$y){
-    $segundosdias=$d*86400;
-    $segundosmeses=$m*2629800;
-    $segundosaños=$y*31557600;
-    $segundostotal=$segundosmeses+$segundosaños+$segundosdias;
-    echo "Los segundos totales son ".$segundostotal;
-    $minutos=$segundostotal/60;
-    echo "Los minutos son: $minutos";
-    $hora=$minutos/60;
-    echo "Los años: $hora";
-}
-convertirDiasaSegundos($d,$m,$y);
+echo "Introduce aÃ±o: ";
+fscanf(STDIN,"%d\n",$ano);
+
+//time() es una funcion que saca los segundos de la fecha actual y el strtotime saca los segundos del formato introducido
+//entonces resta es los segudo de la fecha actual con los segundos de la fecha introducida, que dá los segundos entre medias
+$resultime =Time() - strtotime("$dia-$mes-$ano");
+//Resultado de la resta:  787410206
+echo "tiempo: $resultime \n";
+
+
+const minu = 60;			// 60
+const hor = 3600; 		// 60 x 60
+const di = 86400; 		// 3600 x 24
+const ms = 2592000;	// 86400 x 30
+const anio = 31536000;	// 86400 x 365
+
+$Anos = (int)($resultime / anio); //787410206  /60 --->  24,96861383815322 pero al convertir a int se queda como 24
+//echo $Anos."\n";
+$result = $resultime % anio;
+//30547303s en años
+$mesTrans = (int)($result / ms); //30547303 s / 2595000
+$result = $result % ms;
+
+$resultdia = (int)($result / di);
+$result = $result % di;
+
+$resulthora = (int)($result / hor);
+$result = $result % hor;
+
+$resultminuto = (int)($result /minu);
+$result = $result %minu ;
+
+echo "Han transcurrido desde el $dia/$mes/$ano.
+$Anos años, $mesTrans meses , $resultdia dias, $resulthora h, $resultminuto m y $result s";
 
 ?>
