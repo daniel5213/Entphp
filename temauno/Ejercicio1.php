@@ -1,6 +1,8 @@
 <?php
 echo "Introduce un numero";
 fscanf(STDIN, "%d\n",$num);
+
+//////////7jdsafi
 $max=$num;
 $min=$num;
 
