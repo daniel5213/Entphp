@@ -13,7 +13,7 @@ fscanf(STDIN,"%d\n",$ano);
 //entonces resta es los segudo de la fecha actual con los segundos de la fecha introducida, que dá los segundos entre medias
 $resultime =Time() - strtotime("$dia-$mes-$ano");
 //Resultado de la resta:  787410206
-echo "tiempo: $resultime \n";
+echo "Segundo totales: $resultime \n";
 
 
 const minu = 60;			// 60
