@@ -2,7 +2,8 @@
 echo "Introduce un numero";
 fscanf(STDIN, "%d\n",$num);
 
-//////////7jdsafi
+/**
+ * Programa que */
 $max=$num;
 $min=$num;
 

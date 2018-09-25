@@ -2,6 +2,7 @@
 include 'Ejercicio9.php';
 $number =0;
 $format= ' ' ;
+
 echo "Introduce el numero:";
 fscanf(STDIN, "%d\n",$number);
 
