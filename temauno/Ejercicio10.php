@@ -4,7 +4,7 @@ $number =0;
 $format= ' ' ;
 do{
     echo "Introduce el numero:";
-
+ 
 fscanf(STDIN, "%d\n",$number);
 }while($number<1||$number>10);
 do{
