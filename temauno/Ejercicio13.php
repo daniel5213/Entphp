@@ -7,5 +7,5 @@ echo "texto remplazado\n";
 foreach ($prohibida as $prohibida){
 $sting= str_replace($prohibida, "******", $sting);
 }
-echo $sting;
+echo $sting; 
 ?>
