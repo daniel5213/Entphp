@@ -4,21 +4,21 @@
     Hacer un programa que muestre los datos de forma legible:
 */
 
-$nom='';$ape='';$tel=0;
+
 $cadena="Daniel:Alvarez:695185431//Yolanda:Santiago:656496104";
+$family= explode("//", $cadena);
 
-$arrayInfo=[
-    "info1"=>["Daniel","Alvarez",695185431]
-];
-
-for ($i=0;$i<3;$i++){
-    echo $i;
-    if ($i = 0){
-        echo "Nombre: ".$arrayInfo['info1'][$i]."\n";
-    }
-    echo $arrayInfo['info1'][$i]."\n";
+foreach ($family as $family){
+    $datos= explode(":", $family);
+    
+    echo "---------\n";
+    echo "Nombre: ".$datos[0]."\n";
+    echo "Apellido: ".$datos[1]."\n";
+    echo "Telefono: ".$datos[2]."\n";
+    
+}
 
        
     
-}
+
 ?>
