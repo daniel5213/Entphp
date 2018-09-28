@@ -1,5 +1,31 @@
 <?php
 
+function Menu($o) {
+    echo "Opciones Empleados\n";
+    echo "1.- Nuevo Empleados\n";
+    echo "2.- Modificar Empleados\n";
+    echo "3.- Borrar Empleados\n";
+    echo "4. Consultar Empleados\n";
+    echo "\n";
+    echo "Opciones Departamentos\n";
+    echo "5. Nuevo Departamentos\n";
+    echo "6. Modificar Departamentos\n";
+    echo "7. Borrar Departamentos\n";
+    echo "8. Consultar Despartamentos\n";
+    
+    
+    switch ($o){
+        case 1:
+            AñadirBD();
+            break;
+    }
+    
+}
+
+function AñadirBD($param) {
+    
+}
+
 $bd=[];
 $bd['departamento'][]=['idDepart'=>10,'Nombre'=>"Ventas",'Descripción'=>"Planta 1 izq"];
 $bd['departamento'][]=['idDepart'=>20,'Nombre'=>"Compras",'Descripción'=>"Planta 1 der"];
@@ -16,6 +42,23 @@ function nd($id,$bd){
     return $sol;
 
 }
+
+
+
+
+
+
+//-----------------------Main--------------------------\\
+
+$opcion = 0;
+
+echo "Bienvenido al menu de los empleados";
+echo "\nElige la opcion que se desé";
+fscanf(SRDIN, "%d\n", $opcion);
+
+
+
+Menu($opcion);
 echo "Listado de los empleados:\n";
 foreach ($bd['empleado'] as $empleado){
     echo "({$empleado['idEmpl']}//{$empleado['Nombre']}//{$empleado['Descripción']}//".nd($empleado['idDepart'],$bd).")\n";
