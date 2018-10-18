@@ -6,8 +6,8 @@ if (isset($_GET['status']) && $_GET['status']=='error'){
 ?>
 
 <form action="loginPost.php" method="post">
-Nombre---><input type="text" id="usuario" name="usuario"/><br>
-Contraseña ---><input type="password" id="pwd" name="pwd"/><br>
+Nombre---><input type="text" id="usuario" name="usuario"/><br/>
+Contraseña ---><input type="password" id="pwd" name="pwd"/><br/>
 <input type="submit" value="Iniciar Session"/>
 
 </form>

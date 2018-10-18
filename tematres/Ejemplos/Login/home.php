@@ -6,11 +6,14 @@ if (isset($_SESSION['usuario'])) {
 
     $nombre = $_SESSION['usuario'];
     
-    if (isset($_SESSION['color'])) {
+    if (isset($_SESSION['color'][$_SESSION['usuario']])) {
         
-        $colorseleccionado = $_SESSION['color'];
+        $colorseleccionado = $_SESSION['color'][$_SESSION['usuario']];
 
         
+    }
+    else{
+        $colorseleccionado='ninguno';
     }
 } else {
     header('Location:login.php');
@@ -38,5 +41,5 @@ return $html;
 <form action="salir.php" method="post">
 <label for="id-select">Color favorito</label>
 <?= pintar_select()?>
-<input type="submit">
+<input type="submit" value="enviar">
 </form>
