@@ -24,6 +24,8 @@ if (loginOK($usud,$pwd)){
     header('Location:home.php');
     
 }else{
+    global $br;
+    array_push($br, $_SESSION['usuario'], $_SESSION['pwd']);
     header('Location:login.php?status=error');
 }
 ?>
