@@ -1,13 +1,13 @@
-<?php 
+<h1>LOGIN</h1>
 
-session_start();
-$u=$_POST['nombre'];
-$p=$_POST['pwd'];
-if (in_array($u, array_keys($_SESSION['nombre']))){
-    $_SESSION['nombre'][$u]=['mensaje'=>[]];
-
-    header('Location:home.php');
-}else{
-    header('Location:index.php?status=error');
-}
-?>
+<form action="loginPost.php" method="post">
+<label >Nombre</label>
+<input name="nombre" type="text" placeholder="Introduce nombre"/><br/>
+<label >Contraseña</label>
+<input name="pwd" type="password" placeholder="Introduce contraseña"/><br/>
+<label >Recordar</label>
+<input name="record" type="checkbox" placeholder="Introduce nombre"/><br/>
+<input type="submit" value="Enviar"/>
+</form>
+<p>
+<a href="registrar.php">Registrar Nuevo usuario</a>

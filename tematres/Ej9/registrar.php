@@ -1,6 +1,6 @@
 <h1>Bienvenido a tu nuevo registro</h1>
 
-<form action="register.php" method="post">
+<form action="registrarPost.php" method="post">
 <label >Nombre</label>
 <input name="nombre" type="text" placeholder="Introduce nombre"/><br/>
 <label >Contraseña</label>
