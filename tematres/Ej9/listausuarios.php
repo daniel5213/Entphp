@@ -1,6 +1,7 @@
 <?php
 session_start();
 $actual = $_SESSION['_activo'];
+$_SESSION['_activo']=$actual;
 $usuarios = $_SESSION['usuarios'];
 echo "==============Array Usuarios conectados=================";
 echo "<pre>";
@@ -20,11 +21,18 @@ echo <<<HTML
 HTML;
 foreach ($usuarios as $usuario => $infousuario) {
     if ($usuario != $actual) {
+        $_SESSION['remitente']=$usuario;
        foreach ($infousuario as $contenidoinfo => $arrayinfo) {
             if ($contenidoinfo == 'mensajes') {
                 $numerosize=sizeof($arrayinfo);
                 if ($numerosize>0){
-                echo "<tr><td>$usuario</td><td>($numerosize)</td></tr></table>";
+                echo "<tr><td>$usuario</td><td>($numerosize)</td>
+                <td><a href='leer.php'>Leer</a></td> 
+                <td><a href='escribir.php'>Escribir</a></td></tr></table>";
+                }else{
+                    echo "<tr><td>$usuario</td><td>($numerosize)</td>
+                   <td><a href='escribir.php'>Escribir</a></td>
+                </tr></table>";
                 }
             }
         }

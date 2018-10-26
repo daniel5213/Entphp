@@ -1,11 +1,16 @@
-<h2>Usuario actual</h2>
+<?php
+session_start();
+$actual = $_SESSION['_activo'];
+?>
 
-<form>
+<h2>Usuario actual <?= $actual?></h2>
+
+
 Lista de mensajes de 
 
 <table>
 <tr>
 <th></th>
 </tr></table>
-</form>
+
 <a href="home.php">Volver a lista de usuarios</a>
