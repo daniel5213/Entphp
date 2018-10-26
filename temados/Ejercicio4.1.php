@@ -1,4 +1,4 @@
 <?php
 $_GET {'listos'};
-$_GET { 'tonsodt'};
+$_GET { 'tonsso'};
 ?>
