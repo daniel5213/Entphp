@@ -1,34 +1,33 @@
 <?php
 session_start();
-$actual = $_SESSION['_actual'];
-$general = $_SESSION['usuarios'];
+$actual = $_SESSION['_activo'];
+$usuarios = $_SESSION['usuarios'];
 echo "==============Array Usuarios conectados=================";
 echo "<pre>";
 print_r($actual);
 echo "</pre>";
 echo "==============Array Usuarios creados=================";
 echo "<pre>";
-print_r($general);
+print_r($usuarios);
 echo "</pre>";
 echo "=============Listado=================";
-foreach ($actual as $k => $q) {
-    echo "<h4>Usuario Actual como $q</h4>";
-}
+
+echo "<h4>Usuario Actual como $actual</h4>";
+
 echo <<<HTML
 <h3>Lista de usuarios/mensajes</h3>
-<dl>
+<table>
 HTML;
-foreach ($general as $k => $a) {
-    if ($k != $q) {
-        echo "<dt>$k(".count($_SESSION['usuarios']).")</dt></dl>";
-        foreach ($a as $s => $d){
-            if($s=='mensaje'){
-                foreach ($s as $g=>$r){
-                    echo "<dl><dt>".count($g)."</dt></dl>";
+foreach ($usuarios as $usuario => $infousuario) {
+    if ($usuario != $actual) {
+       foreach ($infousuario as $contenidoinfo => $arrayinfo) {
+            if ($contenidoinfo == 'mensajes') {
+                $numerosize=sizeof($arrayinfo);
+                if ($numerosize>0){
+                echo "<tr><td>$usuario</td><td>($numerosize)</td></tr></table>";
                 }
             }
         }
-        
     }
 }
 

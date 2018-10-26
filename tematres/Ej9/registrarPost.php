@@ -3,7 +3,7 @@ session_start();
 $u=$_POST['nombre'];
 $p=$_POST['pwd'];
 if (!in_array($u, array_keys($_SESSION['usuarios']))){
-  $_SESSION['usuarios'][$u]=['pwd'=>$p,'mensaje'=>[]];
+  $_SESSION['usuarios'][$u]=['pwd'=>$p,'mensajes'=>[]];
 
        header('Location:index.php');
 }else{
