@@ -1,7 +1,7 @@
 <?php
 session_start();
 $actual = $_SESSION['_activo'];
-$_SESSION['_activo']=$actual;
+
 $usuarios = $_SESSION['usuarios'];
 echo "==============Array Usuarios conectados=================";
 echo "<pre>";
