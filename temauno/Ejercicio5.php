@@ -1,6 +1,6 @@
 <?php
 
-$num=0;$p=0;
+$num=0;$password=0;
 function carta($posicion) {
     $sol='_';
     switch ($posicion){
@@ -26,12 +26,12 @@ while ($num<=0||$num>20);
 
 do{
 echo "Introduce carta maxima";
-fscanf(STDIN,"%d\n", $p);
+fscanf(STDIN,"%d\n", $password);
 }
-while ($p<1||$p>10);
+while ($password<1||$password>10);
 
 for ($i = 0; $i < $num; $i++) {
-    for ($y = 0; $y < $p; $y++) {
+    for ($y = 0; $y < $password; $y++) {
         echo carta($y), ' ';
     }
     

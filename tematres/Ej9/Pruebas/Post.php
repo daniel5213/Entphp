@@ -1,8 +1,8 @@
 <?php
 session_start();
-$u='daniel';
+$usuario='daniel';
 $u2='luis';
 
-$_SESSION['usuarios'][$u][]=['password'=>$p,'mensaje'=>[]];
-$_SESSION['usu']=[$u];
+$_SESSION['usuarios'][$usuario][]=['password'=>$p,'mensaje'=>[]];
+$_SESSION['usu']=[$usuario];
 header('Location:get.php');

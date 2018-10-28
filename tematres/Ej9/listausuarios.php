@@ -21,17 +21,20 @@ echo <<<HTML
 HTML;
 foreach ($usuarios as $usuario => $infousuario) {
     if ($usuario != $actual) {
-        $_SESSION['remitente']=$usuario;
-       foreach ($infousuario as $contenidoinfo => $arrayinfo) {
+
+        foreach ($infousuario as $contenidoinfo => $arrayinfo) {
             if ($contenidoinfo == 'mensajes') {
-                $numerosize=sizeof($arrayinfo);
-                if ($numerosize>0){
-                echo "<tr><td>$usuario</td><td>($numerosize)</td>
-                <td><a href='leer.php'>Leer</a></td> 
-                <td><a href='escribir.php'>Escribir</a></td></tr></table>";
-                }else{
+
+                $numerosize = sizeof($arrayinfo);
+                if ($numerosize > 0) {
+
                     echo "<tr><td>$usuario</td><td>($numerosize)</td>
-                   <td><a href='escribir.php'>Escribir</a></td>
+                <td><a href='leer.php?name=$usuario'>Leer</a></td> 
+                <td><a href='escribir.php?name=$usuario'>Escribir</a></td></tr></table>";
+                } else {
+
+                    echo "</br><tr><td>$usuario</td><td>($numerosize)</td>
+                   <td><a href='escribir.php/?name=$usuario'>Escribir</a></td>
                 </tr></table>";
                 }
             }

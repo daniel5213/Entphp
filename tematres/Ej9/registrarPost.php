@@ -1,9 +1,9 @@
 <?php
 session_start();
-$u=$_POST['nombre'];
-$p=$_POST['pwd'];
-if (!in_array($u, array_keys($_SESSION['usuarios']))){
-  $_SESSION['usuarios'][$u]=['pwd'=>$p,'mensajes'=>[]];
+$usuario=$_POST['nombre'];
+$password=$_POST['pwd'];
+if (!in_array($usuario, array_keys($_SESSION['usuarios']))){
+  $_SESSION['usuarios'][$usuario]=['pwd'=>$password,'mensajes'=>[]];
 
        header('Location:index.php');
 }else{

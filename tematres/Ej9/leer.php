@@ -1,16 +1,34 @@
 <?php
 session_start();
 $actual = $_SESSION['_activo'];
-?>
 
-<h2>Usuario actual <?= $actual?></h2>
+$destinatario = '';
+
+$url = $_SERVER["REQUEST_URI"];
+$url = explode('?', $url);
+
+for ($i = 0; $i < sizeof($url); $i ++) {
+
+    if ($i == 1) {
+        $destinatario = $url[$i];
+    }
+}
+
+echo "<pre>";
+print_r($destinatario);
+echo "</pre>";
+
+echo <<<html
+<h2>Usuario actual $actual</h2>
 
 
-Lista de mensajes de 
+Lista de mensajes de $destinatario
 
 <table>
-<tr>
-<th></th>
-</tr></table>
+html;
+foreach ($_SESSION['usuarios'][$destinatario]['mensajes'] as $indicemensaje => $contenidomensaje) {
 
-<a href="home.php">Volver a lista de usuarios</a>
+    echo "<tr><th>" . $contenidomensaje['fecha'] . "</th><th>" . $contenidomensaje['texto'] . "</th></tr>";
+}
+
+?>

@@ -1,15 +1,13 @@
-<?php 
-
+<?php
 session_start();
-$u=$_POST['nombre'];
-$p=$_POST['pwd'];
+$usuario = $_POST['nombre'];
+$password = $_POST['pwd'];
 
-if (in_array($u, array_keys($_SESSION['usuarios']))&& $p == $_SESSION['usuarios'][$u]['pwd']){
-    
-    
-   $_SESSION['_activo']=$u;
+if (in_array($usuario, array_keys($_SESSION['usuarios'])) && $password == $_SESSION['usuarios'][$usuario]['pwd']) {
+
+    $_SESSION['_activo'] = $usuario;
     header('Location:listausuarios.php');
-}else{
+} else {
     header('Location:login.php?status=error');
 }
 ?>
