@@ -1,11 +1,13 @@
 <?php
-/* if ($_SESSION['recordar']=="1") {
-    $recordar = $_SESSION['recordar'];
-    $linea = "<input name='nombre' type='text' value='$recordar'/>";
-} else {
-    $linea = "<input name='nombre' type='text'
-		placeholder='Introduce nombre'/>";
-} */
+/*
+ * if ($_SESSION['recordar']=="1") {
+ * $recordar = $_SESSION['recordar'];
+ * $linea = "<input name='nombre' type='text' value='$recordar'/>";
+ * } else {
+ * $linea = "<input name='nombre' type='text'
+ * placeholder='Introduce nombre'/>";
+ * }
+ */
 echo <<<html
 <h1>LOGIN</h1>
 

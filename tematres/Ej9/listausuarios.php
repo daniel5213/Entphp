@@ -7,7 +7,7 @@ echo <<<HTML
 <h3>Lista de usuarios/mensajes</h3>
 <table>
 HTML;
-foreach ($_SESSION['usuarios'] as $usuario => $datosUsuario) {
+foreach ($_SESSION['usuarios'] as $usuario) {
 
     $enlaceEscribir = "escribir.php?destinatario=" . $usuario;
     $numeroMensaje = count($_SESSION['usuarios'][$usuario]['mensajes']);
@@ -25,7 +25,7 @@ foreach ($_SESSION['usuarios'] as $usuario => $datosUsuario) {
 
 echo <<<html
 <p>
-<a href="login.php">Volber al login</a>
+<a href="login.php">Volver al login</a>
 html;
 ?>
 
