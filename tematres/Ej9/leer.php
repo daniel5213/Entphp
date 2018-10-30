@@ -4,19 +4,7 @@ $actual = $_SESSION['_activo'];
 
 $destinatario = '';
 
-$url = $_SERVER["REQUEST_URI"];
-$url = explode('?', $url);
-
-for ($i = 0; $i < sizeof($url); $i ++) {
-
-    if ($i == 1) {
-        $destinatario = $url[$i];
-    }
-}
-
-echo "<pre>";
-print_r($destinatario);
-echo "</pre>";
+$destinatario = $_GET['remitente'];
 
 echo <<<html
 <h2>Usuario actual $actual</h2>
@@ -30,5 +18,10 @@ foreach ($_SESSION['usuarios'][$destinatario]['mensajes'] as $indicemensaje => $
 
     echo "<tr><th>" . $contenidomensaje['fecha'] . "</th><th>" . $contenidomensaje['texto'] . "</th></tr>";
 }
+
+echo <<<html
+</table>
+<a href="listausuarios.php">Volver a lista de usuarios</a>
+html;
 
 ?>

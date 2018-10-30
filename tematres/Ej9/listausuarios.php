@@ -1,46 +1,31 @@
 <?php
 session_start();
 $actual = $_SESSION['_activo'];
-
-$usuarios = $_SESSION['usuarios'];
-echo "==============Array Usuarios conectados=================";
-echo "<pre>";
-print_r($actual);
-echo "</pre>";
-echo "==============Array Usuarios creados=================";
-echo "<pre>";
-print_r($usuarios);
-echo "</pre>";
-echo "=============Listado=================";
-
 echo "<h4>Usuario Actual como $actual</h4>";
 
 echo <<<HTML
 <h3>Lista de usuarios/mensajes</h3>
 <table>
 HTML;
-foreach ($usuarios as $usuario => $infousuario) {
-    if ($usuario != $actual) {
+foreach ($_SESSION['usuarios'] as $usuario => $datosUsuario) {
 
-        foreach ($infousuario as $contenidoinfo => $arrayinfo) {
-            if ($contenidoinfo == 'mensajes') {
+    $enlaceEscribir = "escribir.php?destinatario=" . $usuario;
+    $numeroMensaje = count($_SESSION['usuarios'][$usuario]['mensajes']);
+    if ($numeroMensaje > 0) {
+        $enlaceleer = '<a href="leer.php?remitente=' . $usuario . '">Leer</a>';
+    } else {
+        $enlaceleer = '';
+    }
 
-                $numerosize = sizeof($arrayinfo);
-                if ($numerosize > 0) {
+    if ($usuario != $_SESSION['_activo']) {
 
-                    echo "<tr><td>$usuario</td><td>($numerosize)</td>
-                <td><a href='leer.php?name=$usuario'>Leer</a></td> 
-                <td><a href='escribir.php?name=$usuario'>Escribir</a></td></tr></table>";
-                } else {
-
-                    echo "</br><tr><td>$usuario</td><td>($numerosize)</td>
-                   <td><a href='escribir.php/?name=$usuario'>Escribir</a></td>
-                </tr></table>";
-                }
-            }
-        }
+        echo $usuario . '(' . $numeroMensaje . ')&nbsp' . $enlaceleer . '&nbsp<a href="' . $enlaceEscribir . '">Escribir</a></br/>';
     }
 }
 
+echo <<<html
+<p>
+<a href="login.php">Volber al login</a>
+html;
 ?>
 
