@@ -2,7 +2,6 @@
 session_start();
 $remitente = $_POST['remitente'];
 $destinatario = $_POST['destinatario'];
-
 $mensaje = $_POST['mensaje'];
 $tiempodelsistema = time();
 $fechadelenvio = date("d/m/Y", $tiempodelsistema) . "(" . date("H:i", $tiempodelsistema) . ")";

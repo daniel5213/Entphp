@@ -7,7 +7,14 @@ echo <<<HTML
 <h3>Lista de usuarios/mensajes</h3>
 <table>
 HTML;
-foreach ($_SESSION['usuarios'] as $usuario) {
+echo "<pre>";
+print_r($_SESSION['usuarios']);
+echo "</pre>";
+function bandejaentrada($remitente,$desinatario) {
+    
+   
+}
+foreach ($_SESSION['usuarios'] as $usuario=>$datosusuario) {
 
     $enlaceEscribir = "escribir.php?destinatario=" . $usuario;
     $numeroMensaje = count($_SESSION['usuarios'][$usuario]['mensajes']);

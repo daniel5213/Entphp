@@ -2,7 +2,7 @@
 session_start();
 $usuario = $_POST['nombre'];
 $password = $_POST['pwd'];
-if (! in_array($usuario, array_keys($_SESSION['usuarios'])) && ! empty($usuario)) {
+if (! in_array($usuario, array_keys($_SESSION['usuarios'])) && !empty($usuario) && !empty($password)) {
     $_SESSION['usuarios'][$usuario] = [
         'pwd' => $password,
         'mensajes' => []
