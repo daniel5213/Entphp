@@ -2,7 +2,7 @@
 session_start();
 $actual = $_SESSION['_activo'];
 
-$destinatario = '';
+
 
 $destinatario = $_GET['remitente'];
 

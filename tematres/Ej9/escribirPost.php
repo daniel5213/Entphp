@@ -8,8 +8,8 @@ $fechadelenvio = date("d/m/Y", $tiempodelsistema) . "(" . date("H:i", $tiempodel
 print_r($fechadelenvio);
 if ($mensaje != null) {
 
-    $_SESSION['usuarios'][$destinatario]['mensajes'][] = [
-        'remitente' => $remitente,
+    $_SESSION['usuarios'][$remitente]['mensajes'][] = [
+        'remitente' => $destinatario,
         'fecha' => $fechadelenvio,
         'texto' => $mensaje
     ];
