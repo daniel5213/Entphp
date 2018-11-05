@@ -6,7 +6,7 @@ $i = 0;
 
 while ( $num != 0 ) {
     
-    $a [i]=$num;
+    $infousuario [i]=$num;
     $i++;
     echo "Introduce n: ";
     fscanf ( STDIN, "%d\n", $num );
@@ -21,10 +21,10 @@ switch ($op) {
         mostrarSuma ( $stack );
         break;
     case "multiplicar" :
-        mostrarMult ( $a );
+        mostrarMult ( $infousuario );
         break;
     default :
-        echo "Operación no válida";
+        echo "Operaciï¿½n no vï¿½lida";
 }
 
 function mostrarSuma($array) {
