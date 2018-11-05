@@ -3,6 +3,7 @@
 /*Hacer una funcion conbinar que al meter una palabra devuelve en forma html un listado de esa palabra,ej: perr --> perro,perros,perra,perras*/
 function raiz($sustantivo)
 {
+    
     $ultimo_caracter = substr($sustantivo, - 1, 1);
     $raiz = '';
     if ($ultimo_caracter == 's') {
@@ -15,13 +16,13 @@ function raiz($sustantivo)
 
 function combinar($raiz)
 {
-    $html = "<select>\n";
+    $conbinar = ' ';
     $desinencias = ['o','a','os','as'];
     foreach ($desinencias as $desinencia) {
-        $html .= "<option>{$raiz}{$desinencia}</option>\n";
+        $conbinar .= "<td>{$raiz}{$desinencia}</td>";
     }
-    $html .= "</select>\n";
-    return $html;
+    
+    return $conbinar;
 }
 
 ?>
