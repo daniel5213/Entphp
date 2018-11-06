@@ -1,41 +1,27 @@
 <?php
+session_start();
 
+if (! isset($_POST['sustantivo'])) {
+    $_SESSION['sustantivo'] = [];
+} else {
+    if ($_POST['sustantivo'] != '')
+        $_SESSION['sustantivo'][] = $_POST['sustantivo'];
+        echo "<pre>";
+        print_r($_SESSION['sustantivo']);
+        echo "<pre>";
+}
+
+if (isset($_POST['enviar']) && $_POST['enviar'] == "combinar") {
+    header("location:combinar.php");
+}
 echo <<<OUT
-<html>
-<head>
-<meta charset="utf-8">
-<script>
-	var conexion;
-	function accionAJAX() {
-		textoRecibido = conexion.responseText;
-		document.getElementById("idProvincias").innerHTML=textoRecibido;
-	}
-	
-	function introducirDatos() {
-		nombre = document.getElementById('sustantivo').value;
-		conexion = new XMLHttpRequest();
-		conexion.open('GET', 'Tabla.php?ca='+nombre, true);
-		conexion.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-		conexion.send();
-		conexion.onreadystatechange = function() {
-			if (conexion.readyState==4 && conexion.status==200) {
-				accionAJAX();
-			}
-		}
-	}	
 
-</script>
-		
-</head>
-<body>
-<form>
+<form action="index.php" method="post">
 Introduce un sustantivo regular<input type="text" id="sustantivo" name="sustantivo"/><br/>
-<input type="button" value="enviar" onclick="introducirDatos();"/>
+<input type="submit" value="mas"/><input type="submit" name="enviar" value="combinar"/><br/>
+<div id="midiv"/>
 </form>
-</body>
+
 OUT;
-
-
-
 
 ?>

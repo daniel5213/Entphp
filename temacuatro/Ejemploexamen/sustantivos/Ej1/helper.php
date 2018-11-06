@@ -1,9 +1,7 @@
 <?php
-/*Hacer una funcion raiz que al meter un sustantivo devuelve en forma singular,ej: perros --> perro*/
-/*Hacer una funcion conbinar que al meter una palabra devuelve en forma html un listado de esa palabra,ej: perr --> perro,perros,perra,perras*/
+
 function raiz($sustantivo)
 {
-    
     $ultimo_caracter = substr($sustantivo, - 1, 1);
     $raiz = '';
     if ($ultimo_caracter == 's') {
@@ -11,18 +9,24 @@ function raiz($sustantivo)
     } else {
         $raiz = substr($sustantivo, 0, strlen($sustantivo) - 1);
     }
+
     return $raiz;
 }
 
 function combinar($raiz)
 {
-    $conbinar = ' ';
-    $desinencias = ['o','a','os','as'];
-    foreach ($desinencias as $desinencia) {
-        $conbinar .= "<td>{$raiz}{$desinencia}</td>";
-    }
-    
-    return $conbinar;
+    $desinencias = [
+        'o',
+        'os',
+        'a',
+        'as'
+    ];
+
+    $random_keys = array_rand($desinencias, 1);
+
+    $html = "{$raiz}{$desinencias[$random_keys]}";
+
+    return $html;
 }
 
 ?>
