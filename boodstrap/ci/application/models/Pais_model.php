@@ -1,16 +1,15 @@
 <?php
-class Pais_model extends CI_Model {
-    /*
-    function listarTodosPaises() {
-        $this->load->database();
-        $lista_paises = $this->db->get('pais')->result();
-        return $lista_paises;
-    }
-    */
-    function listarTodosPaises() {
-        return R::findAll('pais');
-    }
-        
+class Pais_model extends CI_Model{
     
+    public function crear($nombre){
+        $ok = false;
+        $bean=R::findOne('paises','nombre=?',[$nombre]);
+        $ok($bean == null);
+        if($ok){
+        $pais=R::dispense('paises');
+        $pais->nombre=nombre;
+        R::store('pais');
+        }
+        return $ok;
+    }
 }
-?>
