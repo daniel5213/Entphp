@@ -1,9 +1,9 @@
 <h2>Lista de coches</h2>
 <table class="table table-striped table-bordered">
 	<tr>
-		<th>MATRICULA</th>
-		<th>MARCA</th>
-		<th>MODELO</th>
+		<th>Matricula</th>
+		<th>Marca</th>
+		<th>Modelo</th>
 		<th>Acciones</th>
 	</tr>
 	
@@ -24,13 +24,14 @@
 			<td class="form-inline text-center">
 				<form action="<?=base_url()?>coche/update" method="post">
 					<button><img src="<?=base_url()?>assets/img/edit.png" width="10" height="15"/></button>
-					<input type="hidden" name="matricula" value="<?=$coche->matricula ?>"/>
+					<input type="hidden" name="id" value="<?=$coche->id ?>"/>
 				</form>
 				<form action="<?=base_url()?>coche/delete" method="post">
 					<button><img src="<?=base_url()?>assets/img/trash.png" width="10" height="15"/></button>
-					<input type="hidden" name="matricula" value="<?=$coche->matricula ?>"/>
+					<input type="hidden" name="id" value="<?=$coche->id ?>"/>
 				</form>
 			</td>
 		</tr>
 	<?php endforeach;?>
 </table>
+<a href="<?=base_url()?>coche/crear" class="btn btn-success">Crear nuevo Coche</a>

@@ -41,10 +41,10 @@ class coche extends CI_Controller
     
     public function update()
     {
-        $matricula = (isset($_POST['matricula']) && ! empty($_POST['matricula'])) ? $_POST['matricula'] : null;
-        if ($matricula != null) {
+        $id = (isset($_POST['id']) && ! empty($_POST['id'])) ? $_POST['id'] : null;
+        if ($id != null) {
             $this->load->model('coche_model');
-            $coche = $this->coche_model->getcocheBymatricula($matricula);
+            $coche = $this->coche_model->getCocheById($id);
             $data=[];
             $data['coche'] = $coche;
             frame($this, 'coche/update', $data);
@@ -59,11 +59,11 @@ class coche extends CI_Controller
         $marca_nuevo = isset($_POST['marca']) && ! empty($_POST['marca']) ? $_POST['marca'] : null;
         $modelo_nuevo = isset($_POST['modelo']) && ! empty($_POST['modelo']) ? $_POST['modelo'] : null;
         
-        $matricula = isset($_POST['matricula']) && ! empty($_POST['matricula']) ? $_POST['matricula'] : null;
+        $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
         
-        if ($matricula != null && $matricula_nuevo != null && $marca_nuevo != null && $modelo_nuevo != null) {
+        if ($id != null && $matricula_nuevo != null && $marca_nuevo != null && $modelo_nuevo != null) {
             $this->load->model('coche_model');
-            $ok = $this->coche_model->update($matricula, $matricula_nuevo, $marca_nuevo, $modelo_nuevo);
+            $ok = $this->coche_model->update($id, $matricula_nuevo, $marca_nuevo, $modelo_nuevo);
             if ($ok) {
                 redirect(base_url() . 'coche/listar');
             } else {
@@ -75,10 +75,10 @@ class coche extends CI_Controller
     }
     
     public function delete() {
-        $matricula = isset($_POST['matricula']) && ! empty($_POST['matricula']) ? $_POST['matricula'] : null;
-        if ($matricula != null) {
+        $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
+        if ($id != null) {
             $this->load->model('coche_model');
-            $this->coche_model->delete($matricula);
+            $this->coche_model->delete($id);
             redirect(base_url() . 'coche/listar');
         }
     }

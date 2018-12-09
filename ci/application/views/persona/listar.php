@@ -34,3 +34,4 @@
 		</tr>
 	<?php endforeach;?>
 </table>
+<a href="<?=base_url()?>persona/crear" class="btn btn-success">Crear nueva Persona</a>

@@ -5,7 +5,7 @@
 		<th>Acciones</th>
 	</tr>
 	
-	<?php foreach (@$paises as $pais): ?>
+	<?php foreach ($paises as $pais): ?>
 		<tr>
 			<td>
 				<?= $pais->nombre ?>
@@ -23,3 +23,4 @@
 		</tr>
 	<?php endforeach;?>
 </table>
+<a href="<?=base_url()?>pais/crear" class="btn btn-success">Crear nuevo Pais</a>
