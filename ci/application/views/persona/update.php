@@ -14,5 +14,18 @@
 	<input type="text" name="apellido" required="required" value="<?=$persona->apellido ?>" />
 	<br />
 	
+	Pais de nacimiento
+	
+	<select name="pais">
+	<?php  foreach ($paises as $pais):?>
+	<option value="<?= $pais->id?>"
+	<?php if($persona->nace == $pais->id):?>
+	selected="selected"
+	<?php endif;?>>
+	<?= $pais->nombre?>	</option>
+	<?php endforeach;?>
+	</select>
+	<br />
+	
 	<input type="submit" />
 </form>

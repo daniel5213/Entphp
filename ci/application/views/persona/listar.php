@@ -4,6 +4,8 @@
 		<th>DNI</th>
 		<th>Nombre</th>
 		<th>Apellido</th>
+		<th>País nac.</th>
+		<th>Coches que posee</th>
 		<th>Acciones</th>
 	</tr>
 	
@@ -21,6 +23,19 @@
 				<?= $persona->apellido?>
 			</td>
 			
+			<td>
+				<?php if ($persona->nace != null): ?>
+					<?= $persona->nace->nombre ?>
+				<?php endif;?>
+			</td>
+			
+			<td>
+				<?php foreach ($persona->alias('poseecoche')->ownCocheList as $coche): ?>
+					<?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')' ?>
+				<?php endforeach;?>
+			</td>
+			
+			
 			<td class="form-inline text-center">
 				<form action="<?=base_url()?>persona/update" method="post">
 					<button><img src="<?=base_url()?>assets/img/edit.png" width="10" height="15"/></button>
@@ -33,5 +48,5 @@
 			</td>
 		</tr>
 	<?php endforeach;?>
-</table>
+	</table>
 <a href="<?=base_url()?>persona/crear" class="btn btn-success">Crear nueva Persona</a>

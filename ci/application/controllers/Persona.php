@@ -5,7 +5,11 @@ class Persona extends CI_Controller
 
     public function crear()
     {
-        frame($this, 'persona/crear');
+        $this->load->model('pais_model');
+        $this->load->model('coche_model');
+        $data['paises']=$this->pais_model->listar();
+        $data['coches'] = $this->coche_model->coches_disponibles();
+        frame($this, 'persona/crear', $data);
     }
 
     public function crearPost()
@@ -13,10 +17,12 @@ class Persona extends CI_Controller
         $dni = isset($_POST['dni']) && ! empty($_POST['dni']) ? $_POST['dni'] : null;
         $nombre = isset($_POST['nombre']) && ! empty($_POST['nombre']) ? $_POST['nombre'] : null;
         $apellido = isset($_POST['apellido']) && ! empty($_POST['apellido']) ? $_POST['apellido'] : null;
+        $pais_id = isset($_POST['pais']) && ! empty($_POST['pais']) ? $_POST['pais'] : null;
+        $coches_id = isset($_POST['coche']) && ! empty($_POST['coche']) ? $_POST['coche'] : [];
         
-        if ($dni!= null && $nombre != null && $apellido!=null) {
+        if ($dni!= null && $nombre != null && $apellido!=null && $pais_id!=null ) {
             $this->load->model('persona_model');
-            $ok = $this->persona_model->crear($dni,$nombre,$apellido);
+            $ok = $this->persona_model->crear($dni,$nombre,$apellido,$pais_id,$coches_id);
             if ($ok) {
                 $data=[];
                 $data['nombre'] = $nombre;
@@ -29,6 +35,7 @@ class Persona extends CI_Controller
             // Mensaje ERROR
         }
     }
+    
 
     public function listar()
     {
@@ -44,9 +51,9 @@ class Persona extends CI_Controller
         $id = (isset($_POST['id']) && ! empty($_POST['id'])) ? $_POST['id'] : null;
         if ($id != null) {
             $this->load->model('persona_model');
-            $persona = $this->persona_model->getPersonaById($id);
-            $data=[];
-            $data['persona'] = $persona;
+            $this->load->model('pais_model');
+            $data['persona'] = $this->persona_model->getPersonaById($id);
+            $data['paises'] = $this->pais_model->listar();
             frame($this, 'persona/update', $data);
         } else {
             redirect(base_url());
@@ -58,12 +65,13 @@ class Persona extends CI_Controller
         $dni_nuevo = isset($_POST['dni']) && ! empty($_POST['dni']) ? $_POST['dni'] : null;
         $nombre_nuevo = isset($_POST['nombre']) && ! empty($_POST['nombre']) ? $_POST['nombre'] : null;
         $apellido_nuevo = isset($_POST['apellido']) && ! empty($_POST['apellido']) ? $_POST['apellido'] : null;
+        $pais_nuevo = isset($_POST['pais']) && ! empty($_POST['pais']) ? $_POST['pais'] : null;
         
         $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
 
-        if ($id != null && $dni_nuevo != null && $nombre_nuevo != null && $apellido_nuevo != null) {
+        if ($id != null && $dni_nuevo != null && $nombre_nuevo != null && $apellido_nuevo != null && $pais_nuevo != null ) {
             $this->load->model('persona_model');
-            $ok = $this->persona_model->update($id, $dni_nuevo, $nombre_nuevo, $apellido_nuevo);
+            $ok = $this->persona_model->update($id, $dni_nuevo, $nombre_nuevo, $apellido_nuevo,$pais_nuevo);
             if ($ok) {
                 redirect(base_url() . 'persona/listar');
             } else {

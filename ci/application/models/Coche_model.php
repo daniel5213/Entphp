@@ -23,6 +23,10 @@ class Coche_model extends CI_Model
     public function listar() {
         return R::findAll('coches');
     }
+    
+    public function coches_disponibles() {
+        return R::findAll('coches');
+    }
 
     public function getCocheById($id) {
         return R::findOne('coches','id=?',[$id]);
