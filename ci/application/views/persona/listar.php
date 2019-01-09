@@ -30,7 +30,7 @@
 			</td>
 			
 			<td>
-				<?php foreach ($persona->alias('poseecoche')->ownCocheList as $coche): ?>
+				<?php foreach ($persona->alias('poseecoche')->ownCochesList as $coche): ?>
 					<?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')' ?>
 				<?php endforeach;?>
 			</td>

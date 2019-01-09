@@ -27,5 +27,19 @@
 	</select>
 	<br />
 	
+<fieldset><legend>Coches que posee</legend>
+		<!--  Coches que ya tengo  -->
+		<?php foreach ($persona->alias('poseecoche')->ownCochesList as $coche): ?>
+			<input type="checkbox" name="coche[]" id="id-<?=$coche->id?>" value="<?=$coche->id?>" checked="checked">
+			<label for="id-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
+		<?php endforeach;?>
+		<legend>Coches que no posee</legend>
+		<!--  Coches disponibles -->
+		<?php foreach ($coches_disponibles as $coche): ?>
+			<input type="checkbox" name="coche[]" id="id-<?=$coche->id?>" value="<?=$coche->id?>">
+			<label for="id-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
+		<?php endforeach;?>
+	</fieldset>
+	
 	<input type="submit" />
 </form>

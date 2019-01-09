@@ -25,7 +25,7 @@ class Coche_model extends CI_Model
     }
     
     public function coches_disponibles() {
-        return R::findAll('coches');
+        return R::find('coches','poseecoche_id is null ');
     }
 
     public function getCocheById($id) {
@@ -49,6 +49,8 @@ class Coche_model extends CI_Model
         }
         return $ok;
     }
+    
+    
     
     public function delete($id) {
         $coche = R::load('coches',$id);

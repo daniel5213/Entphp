@@ -52,8 +52,10 @@ class Persona extends CI_Controller
         if ($id != null) {
             $this->load->model('persona_model');
             $this->load->model('pais_model');
+            $this->load->model('coche_model');
             $data['persona'] = $this->persona_model->getPersonaById($id);
             $data['paises'] = $this->pais_model->listar();
+            $data['coches_disponibles'] = $this->coche_model->coches_disponibles();
             frame($this, 'persona/update', $data);
         } else {
             redirect(base_url());
@@ -65,17 +67,18 @@ class Persona extends CI_Controller
         $dni_nuevo = isset($_POST['dni']) && ! empty($_POST['dni']) ? $_POST['dni'] : null;
         $nombre_nuevo = isset($_POST['nombre']) && ! empty($_POST['nombre']) ? $_POST['nombre'] : null;
         $apellido_nuevo = isset($_POST['apellido']) && ! empty($_POST['apellido']) ? $_POST['apellido'] : null;
-        $pais_nuevo = isset($_POST['pais']) && ! empty($_POST['pais']) ? $_POST['pais'] : null;
+        $id_pais_nuevo= isset($_POST['pais']) && ! empty($_POST['pais']) ? $_POST['pais'] : null;
+        $id_coches_despues = isset($_POST['coche'])  ? $_POST['coche'] : [] ;
         
         $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
-
-        if ($id != null && $dni_nuevo != null && $nombre_nuevo != null && $apellido_nuevo != null && $pais_nuevo != null ) {
+        
+        if ($id != null && $dni_nuevo != null && $nombre_nuevo != null && $apellido_nuevo != null) {
             $this->load->model('persona_model');
-            $ok = $this->persona_model->update($id, $dni_nuevo, $nombre_nuevo, $apellido_nuevo,$pais_nuevo);
+            $ok = $this->persona_model->update($id, $dni_nuevo, $nombre_nuevo, $apellido_nuevo, $id_pais_nuevo,$id_coches_despues);
             if ($ok) {
                 redirect(base_url() . 'persona/listar');
             } else {
-               frame($this, 'persona/updateERROR');
+                frame($this, 'persona/updateERROR');
             }
         } else {
             // Mensaje ERROR
