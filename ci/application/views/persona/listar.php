@@ -1,12 +1,19 @@
+
+
 <h2>Lista de personas</h2>
 <table class="table table-striped table-bordered">
 	<tr>
 		<th>DNI</th>
 		<th>Nombre</th>
 		<th>Apellido</th>
+		<th>Estatura</th>
+		<th>Fecha nacimiento</th>
+		<th>Edad.</th>
 		<th>País nac.</th>
 		<th>Coches que posee</th>
+		<th>Aficiones</th>
 		<th>Acciones</th>
+		
 	</tr>
 	
 	<?php foreach ($personas as $persona): ?>
@@ -24,6 +31,18 @@
 			</td>
 			
 			<td>
+				<?= $persona->estatura?>
+			</td>
+			
+			<td>
+				<?= $persona->fnac?>
+			</td>
+			
+			<td>
+				
+				<?= $persona->edad?>
+			</td>
+			<td>
 				<?php if ($persona->nace != null): ?>
 					<?= $persona->nace->nombre ?>
 				<?php endif;?>
@@ -31,7 +50,12 @@
 			
 			<td>
 				<?php foreach ($persona->alias('poseecoche')->ownCochesList as $coche): ?>
-					<?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')' ?>
+					<?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.'),' ?>
+				<?php endforeach;?>
+			</td>
+			<td>
+				<?php foreach ($persona->ownGustosList as $practica): ?>
+					<?=$practica->aficion->nombre?>
 				<?php endforeach;?>
 			</td>
 			

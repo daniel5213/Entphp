@@ -24,8 +24,12 @@ class aficion_model extends CI_Model
         
     }
 
+    public function aficiones_disponibles() {
+        return R::findAll('aficion', 'aficiones_id is null');
+    }
+    
     public function listar() {
-        return R::findAll('aficion');
+        return R::find('aficion');
     }
 
     public function getaficionById($id) {

@@ -6,7 +6,11 @@
 
 	Nombre	<input type="text" name="nombre" required="required">	<br />
 
-	Apellido	<input type="text" name="apellido" required="required">	<br />
+	Apellido	<input type="text" name="apellido" required="required" >	<br />
+	
+	Estatura	<input type="text" name="estatura" required="required" placeholder="sin decimales">	<br />
+	
+	F_Nacimiento	<input type="text" name="fnac" required="required" placeholder="aaaa-mm-dd">	<br />
 
 	País de nacimiento 
 	<select name="pais">
@@ -16,13 +20,21 @@
 	</select>
 	<br/>
 
-	<fieldset><legend>Coches que posee</legend> 
+	<fieldset><legend>Coches disponibles</legend> 
 		<?php foreach ($coches as $coche): ?>
 			<input type="checkbox" name="coche[]" id="id-<?=$coche->id?>" value="<?=$coche->id?>">
 			<label for="id-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
 		<?php endforeach;?>
 	</fieldset>
 	<br/>
+	<fieldset><legend>Aficiones disponibles</legend> 
+		<?php foreach ($aficiones as $aficion): ?>
+			<input type="checkbox" name="aficion[]" id="id-<?=$aficion->id?>" value="<?=$aficion->id?>">
+			<label for="id-<?=$aficion->id?>"><?=$aficion->nombre?></label>	
+				
+		<?php endforeach;?>
+		
+	</fieldset>
 	 
 	<button class="btn btn-primary">Crear persona</button>
 </form>

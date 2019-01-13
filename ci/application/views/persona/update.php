@@ -1,3 +1,13 @@
+<?php 
+function tieneAficion($idAficion,$persona) {
+    $sol = false;
+    foreach ($persona->ownPracticaList as $practica) {
+        $sol = $sol ||  $practica->aficion->id == $idAficion;
+    }
+    return $sol;
+}
+
+?>
 <h2>Actualizar persona</h2>
 <form method="post" action="<?=base_url()?>persona/updatePost">
 	<input type="hidden" name="id" value="<?=$persona->id?>"/>
@@ -41,5 +51,15 @@
 		<?php endforeach;?>
 	</fieldset>
 	
+	<fieldset><legend>Aficiones</legend>
+		<?php foreach ($aficiones as $aficion): ?>
+			<input type="checkbox" name="aficion[]" id="id-<?=$aficion->id?>" value="<?=$aficion->id?>" 
+			<?php if (tieneAficion($aficion->id, $persona)):?>
+				checked="checked"
+			<?php endif;?>
+			>
+			<label for="id-<?=$aficion->id?>"><?=$aficion->nombre?></label>			
+		<?php endforeach;?>
+	</fieldset>
 	<input type="submit" />
 </form>
