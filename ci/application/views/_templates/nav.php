@@ -6,34 +6,33 @@
 
 		<ul class="navbar-nav">
 
-    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> País</a>
-    			
+    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">País</a>
     			<div class="dropdown-menu">
     				<a class="dropdown-item" href="<?=base_url()?>pais/crear">Crear</a>
     				<a class="dropdown-item" href="<?=base_url()?>pais/listar">Listar</a>
     			</div>
     		</li>
     	
-    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Persona</a>
-    			<div class="dropdown-menu">
-    				<a class="dropdown-item" href="<?=base_url()?>persona/crear">Crear</a>
-    				<a class="dropdown-item" href="<?=base_url()?>persona/listar">Listar</a>
-    			</div>
-    		</li>
-    		
-    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Coche</a>
-    			<div class="dropdown-menu">
-    				<a class="dropdown-item" href="<?=base_url()?>coche/crear">Crear</a>
-    				<a class="dropdown-item" href="<?=base_url()?>coche/listar">Listar</a>
-    			</div>
-    		</li>
-			
-			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Aficion</a>
+    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Afición</a>
     			<div class="dropdown-menu">
     				<a class="dropdown-item" href="<?=base_url()?>aficion/crear">Crear</a>
     				<a class="dropdown-item" href="<?=base_url()?>aficion/listar">Listar</a>
     			</div>
     		</li>
 	 
+    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Coche</a>
+    			<div class="dropdown-menu">
+    				<a class="dropdown-item" href="<?=base_url()?>coche/crear">Crear</a>
+    				<a class="dropdown-item" href="<?=base_url()?>coche/listar">Listar</a>
+    			</div>
+    		</li>
+	 
+    		<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Persona</a>
+    			<div class="dropdown-menu">
+    				<a class="dropdown-item" href="<?=base_url()?>persona/crear">Crear</a>
+    				<a class="dropdown-item" href="<?=base_url()?>persona/listar">Listar</a>
+    			</div>
+    		</li>
+
    		</ul>
 	</nav>

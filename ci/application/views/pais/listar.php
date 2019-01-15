@@ -23,4 +23,3 @@
 		</tr>
 	<?php endforeach;?>
 </table>
-<a href="<?=base_url()?>pais/crear" class="btn btn-success">Crear nuevo Pais</a>

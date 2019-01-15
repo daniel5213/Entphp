@@ -8,6 +8,7 @@ function tieneAficion($idAficion,$persona) {
 }
 
 ?>
+
 <h2>Actualizar persona</h2>
 <form method="post" action="<?=base_url()?>persona/updatePost">
 	<input type="hidden" name="id" value="<?=$persona->id?>"/>
@@ -23,43 +24,45 @@ function tieneAficion($idAficion,$persona) {
 	Apellido
 	<input type="text" name="apellido" required="required" value="<?=$persona->apellido ?>" />
 	<br />
-	
-	Pais de nacimiento
-	
+
+	País de nacimiento 
 	<select name="pais">
-	<?php  foreach ($paises as $pais):?>
-	<option value="<?= $pais->id?>"
-	<?php if($persona->nace == $pais->id):?>
-	selected="selected"
-	<?php endif;?>>
-	<?= $pais->nombre?>	</option>
-	<?php endforeach;?>
-	</select>
-	<br />
-	
-<fieldset><legend>Coches que posee</legend>
-		<!--  Coches que ya tengo  -->
-		<?php foreach ($persona->alias('poseecoche')->ownCochesList as $coche): ?>
-			<input type="checkbox" name="coche[]" id="id-<?=$coche->id?>" value="<?=$coche->id?>" checked="checked">
-			<label for="id-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
+		<?php foreach ($paises as $pais): ?>
+			<option value="<?= $pais->id ?>" 
+			     <?php if ($persona->nace != null && $persona->nace->id == $pais->id):?> 
+			     	selected="selected" 
+			     <?php endif;?>
+			     >
+			     <?= $pais->nombre?>
 		<?php endforeach;?>
-		<legend>Coches que no posee</legend>
+	</select>
+	
+	<fieldset><legend>Coches que posee</legend>
+		<!--  Coches que ya tengo  -->
+		<?php foreach ($persona->alias('poseecoche')->ownCocheList as $coche): ?>
+			<input type="checkbox" name="coche[]" id="idco-<?=$coche->id?>" value="<?=$coche->id?>" checked="checked">
+			<label for="idco-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
+		<?php endforeach;?>
+			  <legend>Coches disponibles</legend>
 		<!--  Coches disponibles -->
 		<?php foreach ($coches_disponibles as $coche): ?>
-			<input type="checkbox" name="coche[]" id="id-<?=$coche->id?>" value="<?=$coche->id?>">
-			<label for="id-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
+			<input type="checkbox" name="coche[]" id="idco-<?=$coche->id?>" value="<?=$coche->id?>">
+			<label for="idco-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
 		<?php endforeach;?>
 	</fieldset>
 	
 	<fieldset><legend>Aficiones</legend>
 		<?php foreach ($aficiones as $aficion): ?>
-			<input type="checkbox" name="aficion[]" id="id-<?=$aficion->id?>" value="<?=$aficion->id?>" 
+			<input type="checkbox" name="aficion[]" id="idaf-<?=$aficion->id?>" value="<?=$aficion->id?>" 
 			<?php if (tieneAficion($aficion->id, $persona)):?>
 				checked="checked"
 			<?php endif;?>
 			>
-			<label for="id-<?=$aficion->id?>"><?=$aficion->nombre?></label>			
+			<label for="idaf-<?=$aficion->id?>"><?=$aficion->nombre?></label>			
 		<?php endforeach;?>
 	</fieldset>
+	
+	<br />
+	
 	<input type="submit" />
 </form>

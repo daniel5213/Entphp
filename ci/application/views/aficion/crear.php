@@ -1,5 +1,5 @@
 
-<h2>Nuevo Afición</h2>
+<h2>Nueva afición</h2>
 <form method="post" action="<?=base_url()?>aficion/crearPost">
 	Nombre
 	<input type="text" name="nombre" required="required">

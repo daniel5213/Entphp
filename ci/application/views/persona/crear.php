@@ -1,16 +1,19 @@
 
 <h2>Nueva persona</h2>
+
 <form method="post" action="<?=base_url()?>persona/crearPost">
 
 	DNI <input type="text" name="dni" required="required">	<br />
 
 	Nombre	<input type="text" name="nombre" required="required">	<br />
 
-	Apellido	<input type="text" name="apellido" required="required" >	<br />
+	Apellido	<input type="text" name="apellido" required="required">	<br />
+
+	Estatura <input type="number" min="0" max="300" value="170" name="estatura">	<br />
+
+	Fecha de nacimiento	<input type="date" name="fnac">	<br />
+
 	
-	Estatura	<input type="text" name="estatura" required="required" placeholder="sin decimales">	<br />
-	
-	F_Nacimiento	<input type="text" name="fnac" required="required" placeholder="aaaa-mm-dd">	<br />
 
 	País de nacimiento 
 	<select name="pais">
@@ -20,21 +23,21 @@
 	</select>
 	<br/>
 
-	<fieldset><legend>Coches disponibles</legend> 
+	<fieldset><legend>Coches Disponibles</legend> 
 		<?php foreach ($coches as $coche): ?>
 			<input type="checkbox" name="coche[]" id="id-<?=$coche->id?>" value="<?=$coche->id?>">
 			<label for="id-<?=$coche->id?>"><?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')'?></label>			
 		<?php endforeach;?>
 	</fieldset>
 	<br/>
-	<fieldset><legend>Aficiones disponibles</legend> 
+
+	<fieldset><legend>Aficiones</legend> 
 		<?php foreach ($aficiones as $aficion): ?>
 			<input type="checkbox" name="aficion[]" id="id-<?=$aficion->id?>" value="<?=$aficion->id?>">
-			<label for="id-<?=$aficion->id?>"><?=$aficion->nombre?></label>	
-				
+			<label for="id-<?=$aficion->id?>"><?=$aficion->nombre?></label>			
 		<?php endforeach;?>
-		
 	</fieldset>
-	 
-	<button class="btn btn-primary">Crear persona</button>
+	<br/>
+
+	<input type="submit" />
 </form>

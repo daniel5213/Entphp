@@ -1,4 +1,4 @@
-<h2>Actualizar Aficion</h2>
+<h2>Actualizar afición</h2>
 <form method="post" action="<?=base_url()?>aficion/updatePost">
 	Nombre
 	<input type="hidden" name="id" value="<?=$aficion->id?>"/>

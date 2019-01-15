@@ -7,11 +7,11 @@ class Coche_model extends CI_Model
     {
         $ok = false;
         
-        $bean = R::findOne('coches','matricula=?',[$matricula]);
+        $bean = R::findOne('coche','matricula=?',[$matricula]);
         $ok = ($bean == null);
         
         if ($ok) {
-            $coche = R::dispense('coches');
+            $coche = R::dispense('coche');
             $coche->matricula= $matricula;
             $coche->marca = $marca;
             $coche->modelo= $modelo;
@@ -21,15 +21,17 @@ class Coche_model extends CI_Model
     }
 
     public function listar() {
-        return R::findAll('coches');
-    }
-    
-    public function coches_disponibles() {
-        return R::find('coches','poseecoche_id is null ');
+        return R::findAll('coche');
     }
 
+    
+    public function coches_disponibles() {
+       return R::find('coche','poseecoche_id is null');
+        
+    }
+    
     public function getCocheById($id) {
-        return R::findOne('coches','id=?',[$id]);
+        return R::findOne('coche','id=?',[$id]);
     }
 
     
@@ -37,11 +39,12 @@ class Coche_model extends CI_Model
     {
         $ok = false;
         
-        $bean = R::findOne('coches','id=?',[$id]);
-        $ok = ($bean != null);
+        $bean = R::findOne('coche','id=?',[$id]);
+        $coche_error = R::findOne('coche','matricula=? and id<>?',[$matricula_nuevo,$id]);
+        $ok = ($bean != null && $coche_error == null);
         
         if ($ok) {
-            $coche = R::load('coches',$id);
+            $coche = R::load('coche',$id);
             $coche->matricula= $matricula_nuevo;
             $coche->marca = $marca_nuevo;
             $coche->modelo = $modelo_nuevo;
@@ -50,10 +53,8 @@ class Coche_model extends CI_Model
         return $ok;
     }
     
-    
-    
     public function delete($id) {
-        $coche = R::load('coches',$id);
+        $coche = R::load('coche',$id);
         R::trash($coche);
     }
 }

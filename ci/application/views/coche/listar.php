@@ -1,7 +1,7 @@
 <h2>Lista de coches</h2>
 <table class="table table-striped table-bordered">
 	<tr>
-		<th>Matricula</th>
+		<th>Matrícula</th>
 		<th>Marca</th>
 		<th>Modelo</th>
 		<th>Acciones</th>
@@ -34,4 +34,3 @@
 		</tr>
 	<?php endforeach;?>
 </table>
-<a href="<?=base_url()?>coche/crear" class="btn btn-success">Crear nuevo Coche</a>

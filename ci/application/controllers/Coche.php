@@ -1,13 +1,13 @@
 <?php
 
-class coche extends CI_Controller
+class Coche extends CI_Controller
 {
-    
+
     public function crear()
     {
         frame($this, 'coche/crear');
     }
-    
+
     public function crearPost()
     {
         $matricula = isset($_POST['matricula']) && ! empty($_POST['matricula']) ? $_POST['matricula'] : null;
@@ -19,17 +19,17 @@ class coche extends CI_Controller
             $ok = $this->coche_model->crear($matricula,$marca,$modelo);
             if ($ok) {
                 $data=[];
-                $data['marca'] = $marca;
+                $data['matricula'] = $matricula;
                 frame($this, 'coche/crearOK', $data);
             } else {
-                $data['marca'] = $marca;
+                $data['matricula'] = $matricula;
                 frame($this, 'coche/crearERROR', $data);
             }
         } else {
             // Mensaje ERROR
         }
     }
-    
+
     public function listar()
     {
         $this->load->model('coche_model');
@@ -38,7 +38,7 @@ class coche extends CI_Controller
         $data['coches'] = $coches;
         frame($this, 'coche/listar', $data);
     }
-    
+
     public function update()
     {
         $id = (isset($_POST['id']) && ! empty($_POST['id'])) ? $_POST['id'] : null;
@@ -52,7 +52,7 @@ class coche extends CI_Controller
             redirect(base_url());
         }
     }
-    
+
     public function updatePost()
     {
         $matricula_nuevo = isset($_POST['matricula']) && ! empty($_POST['matricula']) ? $_POST['matricula'] : null;
@@ -60,20 +60,20 @@ class coche extends CI_Controller
         $modelo_nuevo = isset($_POST['modelo']) && ! empty($_POST['modelo']) ? $_POST['modelo'] : null;
         
         $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
-        
+
         if ($id != null && $matricula_nuevo != null && $marca_nuevo != null && $modelo_nuevo != null) {
             $this->load->model('coche_model');
             $ok = $this->coche_model->update($id, $matricula_nuevo, $marca_nuevo, $modelo_nuevo);
             if ($ok) {
                 redirect(base_url() . 'coche/listar');
             } else {
-                frame($this, 'coche/updateERROR');
+               frame($this, 'coche/updateERROR');
             }
         } else {
             // Mensaje ERROR
         }
     }
-    
+
     public function delete() {
         $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
         if ($id != null) {

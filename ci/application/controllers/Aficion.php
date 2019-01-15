@@ -1,16 +1,17 @@
 <?php
-class Aficion extends CI_Controller{
+
+class Aficion extends CI_Controller
+{
+
     public function crear()
     {
         frame($this, 'aficion/crear');
     }
-    
+
     public function crearPost()
     {
         $nombre = isset($_POST['nombre']) && ! empty($_POST['nombre']) ? $_POST['nombre'] : null;
-       
-        
-        if ($nombre!= null) {
+        if ($nombre != null) {
             $this->load->model('aficion_model');
             $ok = $this->aficion_model->crear($nombre);
             if ($ok) {
@@ -22,53 +23,57 @@ class Aficion extends CI_Controller{
                 frame($this, 'aficion/crearERROR', $data);
             }
         } else {
-            // Mensaje ERROR
+            $data['nombre'] = 'desconocida';
+            frame($this, 'aficion/crearERROR', $data);
         }
     }
-    
+
     public function listar()
     {
         $this->load->model('aficion_model');
+        $this->load->model('persona_model');
         $aficiones = $this->aficion_model->listar();
+        $estaturamedia = $this->persona_model->getEstaturamedia();
         $data=[];
         $data['aficiones'] = $aficiones;
+        $data['estaturas'] = $estaturamedia;
         frame($this, 'aficion/listar', $data);
     }
-    
+
     public function update()
     {
         $id = (isset($_POST['id']) && ! empty($_POST['id'])) ? $_POST['id'] : null;
         if ($id != null) {
             $this->load->model('aficion_model');
-            $aficion = $this->aficion_model->getaficionById($id);
+            $aficion = $this->aficion_model->getAficionById($id);
+            $estaturamedia = $this->aficion_model->getEstaturamedia();
             $data=[];
             $data['aficion'] = $aficion;
+            $data['estaturamedia'] = $estaturamedia;
             frame($this, 'aficion/update', $data);
         } else {
             redirect(base_url());
         }
     }
-    
+
     public function updatePost()
     {
         $nombre_nuevo = isset($_POST['nombre']) && ! empty($_POST['nombre']) ? $_POST['nombre'] : null;
-       
-        
         $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
-        
+
         if ($id != null && $nombre_nuevo != null) {
             $this->load->model('aficion_model');
             $ok = $this->aficion_model->update($id, $nombre_nuevo);
             if ($ok) {
                 redirect(base_url() . 'aficion/listar');
             } else {
-                frame($this, 'aficion/updateERROR');
+               frame($this, 'aficion/updateERROR');
             }
         } else {
             // Mensaje ERROR
         }
     }
-    
+
     public function delete() {
         $id = isset($_POST['id']) && ! empty($_POST['id']) ? $_POST['id'] : null;
         if ($id != null) {

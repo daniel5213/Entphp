@@ -1,5 +1,3 @@
-
-
 <h2>Lista de personas</h2>
 <table class="table table-striped table-bordered">
 	<tr>
@@ -7,13 +5,11 @@
 		<th>Nombre</th>
 		<th>Apellido</th>
 		<th>Estatura</th>
-		<th>Fecha nacimiento</th>
-		<th>Edad.</th>
+		<th>Edad</th>
 		<th>País nac.</th>
 		<th>Coches que posee</th>
 		<th>Aficiones</th>
 		<th>Acciones</th>
-		
 	</tr>
 	
 	<?php foreach ($personas as $persona): ?>
@@ -33,15 +29,13 @@
 			<td>
 				<?= $persona->estatura?>
 			</td>
-			
-			<td>
-				<?= $persona->fnac?>
-			</td>
-			
+
 			<td>
 				
-				<?= $persona->edad?>
+				
+				<?= $edad[$persona->id]?>
 			</td>
+
 			<td>
 				<?php if ($persona->nace != null): ?>
 					<?= $persona->nace->nombre ?>
@@ -49,13 +43,19 @@
 			</td>
 			
 			<td>
-				<?php foreach ($persona->alias('poseecoche')->ownCochesList as $coche): ?>
-					<?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.'),' ?>
+				<?php foreach ($persona->alias('poseecoche')->ownCocheList as $coche): ?>
+					<?=$coche->matricula.'('.$coche->marca.' '.$coche->modelo.')' ?>
 				<?php endforeach;?>
 			</td>
+			
 			<td>
-				<?php foreach ($persona->ownGustosList as $practica): ?>
+				<!-- REPETIDO, para que tengáis las dos versiones
+				<?php foreach ($persona->ownPracticaList as $practica): ?>
 					<?=$practica->aficion->nombre?>
+				<?php endforeach;?>
+				 -->
+				<?php foreach ($persona->aggr('ownPracticaList','aficion') as $aficion): ?>
+					<?=$aficion->nombre?>
 				<?php endforeach;?>
 			</td>
 			
@@ -72,5 +72,4 @@
 			</td>
 		</tr>
 	<?php endforeach;?>
-	</table>
-<a href="<?=base_url()?>persona/crear" class="btn btn-success">Crear nueva Persona</a>
+</table>

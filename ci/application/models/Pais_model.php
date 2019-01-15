@@ -32,7 +32,8 @@ class Pais_model extends CI_Model
         $ok = false;
         
         $bean = R::findOne('pais','id=?',[$id]);
-        $ok = ($bean != null);
+        $pais_error = R::findOne('pais','nombre=? and id<>?',[$nombre_nuevo,$id]);
+        $ok = ($bean != null && $pais_error == null);
         
         if ($ok) {
             $pais = R::load('pais',$id);
