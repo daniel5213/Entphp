@@ -14,15 +14,41 @@
 			</td>
 			<td><?php 
 			$sql = <<<SQL
-    SELECT avg(estatura) from persona,practica where aficion_id=$aficion->id 
+    select round(avg(estatura),2) from persona 
+        where id 
+            in ( select persona_id from practica 
+                  where aficion_id=( select id from aficion where id=$aficion->id))
 
 SQL;
 			$sql=R::getAssoc($sql);
 			foreach ($sql as $resultado){
-            echo $resultado.",";
+			    if ($resultado==""){
+			        echo "-----";}else{
+			            echo $resultado."cm";
+			        }
 			}
-			?></td>
-			<td>-----</td>
+			?> <td>
+			<td>	<?php 
+			$sql = <<<SQL
+                select DISTINCT ROUND(avg(TIMESTAMPDIFF(YEAR,fnac,CURDATE())), 1) from persona 
+                       where id in ( 
+                           select DISTINCT persona_id from practica
+                                 where aficion_id=( 
+                                       select DISTINCT id from aficion
+                                             where id=$aficion->id))
+SQL;
+			$sql=R::getAssoc($sql);
+			foreach ($sql as $resultado){
+			    if ($resultado==""){
+			        echo "-----";}else{
+			            echo $resultado;
+			        }
+			}
+			?>
+	</td>
+			
+								
+			
 			<td class="form-inline text-center">
 				<form action="<?=base_url()?>aficion/update" method="post">
 					<button><img src="<?=base_url()?>assets/img/edit.png" width="10" height="15"/></button>

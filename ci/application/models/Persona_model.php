@@ -13,8 +13,10 @@ SQL;
     
     public function getEstaturamedia() {
         $sql = <<<SQL
-    SELECT avg(estatura) as centimetros
-    FROM persona
+    select avg(estatura) from persona 
+        where id 
+            in ( select persona_id from practica 
+                  where aficion_id=( select id from aficion))
 SQL;
         return R::getAssoc($sql);
     }
