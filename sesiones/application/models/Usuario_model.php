@@ -1,14 +1,18 @@
 <?php
 
-class Persona_model extends CI_Model
+class Usuario_model extends CI_Model
 {
-     public function iniciosesion($nombre, $password){
+    public function ejecutarsentencia($nombre, $password){
         
         $sql = <<<SQL
-    SELECT nombre, password
-    FROM usuarios where nombre=$nombre and password=$password;
+    SELECT nombre
+    FROM usuarios where nombre='$nombre' and password='$password';
 SQL;
         return R::getAssoc($sql);
+    }
+    
+    public function iniciosesion(){
+        
     }
     public function crear($correo, $nombre, $password)
     {
@@ -16,16 +20,14 @@ SQL;
         
         $bean = R::findOne('usuarios', 'correo=?', [$correo]);
         $ok = ($bean == null);
-   
-           if ($ok) {
+        
+        if ($ok) {
             $usuario = R::dispense('usuarios');
             $usuario->correo = $correo;
             $usuario->nombre = $nombre;
             $usuario->password = $password;
-            
-            
-           
             R::store($usuario);
+            $ok=true;
         }
         return $ok;
     }
@@ -39,7 +41,7 @@ SQL;
         ]);
     }
     
-
+    
     
     public function delete($id)
     {
@@ -47,3 +49,4 @@ SQL;
         R::trash($usuario);
     }
 }
+?>

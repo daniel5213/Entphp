@@ -2,13 +2,15 @@
 <div class="container">
 	<div class="jumbotron">
 		<div class="started">
-		<form action="#" method="get">
+		<form action="<?=base_url()?>usuario/crearPost" method="post">
+		<label for="email">Correo</label>
+		<input type="text" name="email"/><br>
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre"/><br>
 		<label for="pwd">Contraseña</label>
 		<input type="text" name="pwd"/><p>
 		<p><p>
-		<button type="submit" class="btn btn-primary">Crear usuario</button>
+		<input type="submit" />
 		<button type="reset" class="btn btn-secondary">Borrar</button>
 		
 		</form>

@@ -2,15 +2,15 @@
 <div class="container">
 	<div class="jumbotron">
 		<div class="started">
-		<form action="<?php base_url()?>home/comprobarUsuario"  method="post">
+		<form action="<?php base_url()?>usuario/comprobarUsuario"  method="post">
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre"/><br>
 		<label for="pwd">Contraseña</label>
 		<input type="password" name="pwd"/><p>
-		<a href="<?php base_url()?>home/crear">Nuevo usuario</a>
+		<a href="<?php base_url()?>usuario/crear">Nuevo usuario</a>
 		<p>
 		<p>
-		<button type="submit" class="btn btn-primary" disabled>Inicio de session</button>
+		<button type="submit" class="btn btn-primary">Inicio de session</button>
 		
 		</form>
 		</div>
