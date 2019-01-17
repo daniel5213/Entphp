@@ -28,14 +28,38 @@ class Aficion_model extends CI_Model
     }
     
 
-    public function getCountAficion() {
-    $sql = <<<SQL
-    SELECT a.id, count(*) as numaf
-    FROM aficion a, practica pr 
-    WHERE a.id=pr.aficion_id and nombre=nombre GROUP by a.nombre
+    public function getPersonasxAficion(){
+        $sql = <<<SQL
+			SELECT pr.aficion_id,count(pe.id)
+				FROM `practica` pr, `persona` pe
+				WHERE pe.id=pr.persona_id
+				GROUP BY pr.aficion_id
 SQL;
-    return R::getAll($sql);
+        return R::getAssoc($sql);
     }
+    
+    public function getEdadmedia (){
+        $sql = <<<SQL
+			SELECT pr.aficion_id,ROUND(avg(TIMESTAMPDIFF(YEAR,pe.fnac,CURRENT_DATE())),1)
+				FROM `practica` pr, `persona` pe
+				WHERE pe.id=pr.persona_id
+				GROUP BY pr.aficion_id
+SQL;
+        return R::getAssoc($sql);
+        
+    }
+    public function getEstaturamedia() {
+        $sql= <<<sql
+        SELECT pr.aficion_id,ROUND(avg(pe.estatura),2)
+        FROM `practica` pr, `persona` pe
+        WHERE pe.id=pr.persona_id
+        GROUP BY pr.aficion_id 
+sql;
+        return R::getAssoc($sql);
+    }
+    
+    
+
     public function update($id,$nombre_nuevo)
     {
         $ok = false;

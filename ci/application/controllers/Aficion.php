@@ -30,14 +30,16 @@ class Aficion extends CI_Controller
 
     public function listar()
     {
+        $data=[];
         $this->load->model('aficion_model');
         //$this->load->model('persona_model');
         $aficiones = $this->aficion_model->listar();
-        $compartidos = $this->aficion_model->getCountAficion();
-        //$estaturamedia = $this->persona_model->getEstaturamedia();
-        $data=[];
+        $data['personasxAficion']=$this->aficion_model->getPersonasxAficion();
+        $data['estaturas']= $this->aficion_model->getEstaturamedia();
+        $data['edadesMedias']=$this->aficion_model->getEdadmedia();
+        
         $data['aficiones'] = $aficiones;
-        $data['compartidos'] = $compartidos;
+        
        // $data['estaturas'] = $estaturamedia;
         frame($this, 'aficion/listar', $data);
     }

@@ -24,6 +24,14 @@ function tieneAficion($idAficion,$persona) {
 	Apellido
 	<input type="text" name="apellido" required="required" value="<?=$persona->apellido ?>" />
 	<br />
+	Estatura
+	<input type="number"required="required" name="estatura" value="<?=$persona->estatura ?>" />
+	<br />
+	
+	Fecha de nacimiento
+	<input type="date" required="required" name="fnac" value="<?=$persona->fnac ?>" />
+	<?= $persona->fnac?>
+	<br />
 
 	País de nacimiento 
 	<select name="pais">

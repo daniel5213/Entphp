@@ -4,10 +4,12 @@ class Persona_model extends CI_Model
 {
 
     public function getEdades() {
+   
     $sql = <<<SQL
     SELECT id,(TIMESTAMPDIFF(YEAR,fnac,CURDATE())) as edad
     FROM persona
 SQL;
+
        return R::getAssoc($sql);    
     }
     
@@ -67,7 +69,7 @@ SQL;
         ]);
     }
 
-    public function update($id, $dni_nuevo, $nombre_nuevo, $apellido_nuevo, $id_pais_nuevo, $id_coches_despues, $id_aficiones_despues)
+    public function update($id, $dni_nuevo, $nombre_nuevo, $apellido_nuevo, $estatura_nuevo,$fnac_nuevo,$id_pais_nuevo, $id_coches_despues, $id_aficiones_despues)
     {
         $ok = false;
 
@@ -85,6 +87,8 @@ SQL;
             $persona->dni = $dni_nuevo;
             $persona->nombre = $nombre_nuevo;
             $persona->apellido = $apellido_nuevo;
+            $persona->estatura = $estatura_nuevo;
+            $persona->fnac = $fnac_nuevo;
             $persona->nace = R::load('pais', $id_pais_nuevo);
             R::store($persona);
 
