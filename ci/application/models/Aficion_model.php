@@ -19,15 +19,23 @@ class Aficion_model extends CI_Model
     }
 
     public function listar() {
+        
         return R::findAll('aficion');
     }
 
     public function getAficionById($id) {
         return R::findOne('aficion','id=?',[$id]);
     }
+    
 
-    
-    
+    public function getCountAficion() {
+    $sql = <<<SQL
+    SELECT a.id, count(*) as numaf
+    FROM aficion a, practica pr 
+    WHERE a.id=pr.aficion_id and nombre=nombre GROUP by a.nombre
+SQL;
+    return R::getAll($sql);
+    }
     public function update($id,$nombre_nuevo)
     {
         $ok = false;

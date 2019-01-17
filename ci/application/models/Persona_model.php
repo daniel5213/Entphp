@@ -13,7 +13,7 @@ SQL;
     
     public function getEstaturamedia() {
         $sql = <<<SQL
-    select avg(estatura) from persona 
+    select avg(estatura) as media from persona 
         where id 
             in ( select persona_id from practica 
                   where aficion_id=( select id from aficion))
