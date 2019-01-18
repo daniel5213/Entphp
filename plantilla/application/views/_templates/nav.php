@@ -1,7 +1,7 @@
 	<nav class="container navbar navbar-expand-sm navbar-dark bg-primary rounded" id="sideNav">
 	
-      <a class="navbar-brand" href="#page-top">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?=base_url()?>/assets/img/profile.jpg" alt="">
+      <a class="navbar-brand" href="#">
+          
       </a>
      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">

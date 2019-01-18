@@ -4,7 +4,7 @@ class Home extends CI_Controller {
    
     
     public function presentacion() {
-        $datos['nombre'] = isset($_GET['nombre'])?$_GET['nombre']:'Daniel Alvarez';
+        $datos['nombre'] = isset($_GET['nombre'])?$_GET['nombre']:'Alberto Garay';
        
        frame($this,'home/presentacion',$datos);
     }

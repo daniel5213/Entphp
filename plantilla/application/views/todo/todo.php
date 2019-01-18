@@ -1,8 +1,8 @@
 <div class="container-fluid p-0">
 
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+      <section class="resume-section p-3 p-lg-3 d-flex d-column" id="about">
         <div class="my-auto">
-          <h1 class="mb-0">Daniel
+          <h1 class="mb-5">Daniel
             <span class="text-primary">Alvarez</span>
           </h1>
           <div class="subheading mb-5">CALLE CUENCA N10 3C · rivas-vaciamadrid, 28523· (+34) 91-499-21-48/695185431 ·
