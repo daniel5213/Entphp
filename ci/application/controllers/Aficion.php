@@ -5,6 +5,7 @@ class Aficion extends CI_Controller
 
     public function crear()
     {
+        
         frame($this, 'aficion/crear');
     }
 
